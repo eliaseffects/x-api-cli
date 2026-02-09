@@ -25,10 +25,10 @@
     <circle cx="158" cy="152" r="7" fill="#6BCB77"/>
 
     <text x="104" y="220" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="23">$ x-post "Ship day: CLI is live"</text>
-    <text x="104" y="268" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">✅ Posted: https://x.com/i/status/1234567890</text>
+    <text x="104" y="268" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">[OK] Posted: https://x.com/i/status/1234567890</text>
 
     <text x="104" y="334" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="23">$ x-delete 1234567890</text>
-    <text x="104" y="382" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">✅ Deleted: 1234567890</text>
+    <text x="104" y="382" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">[OK] Deleted: 1234567890</text>
 
     <text x="104" y="448" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="21">$ x-post --help</text>
     <text x="104" y="486" fill="#8FD3FF" font-family="'Menlo', 'Consolas', monospace" font-size="20">Usage + examples with safe no-post behavior</text>
@@ -40,7 +40,7 @@
 
     <text x="715" y="248" fill="#CFE6FF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600">Reliable X API commands for real automation</text>
 
-    <text x="715" y="304" fill="#9EC4E8" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23">OAuth 1.0a • Post • Reply • Quote • Delete • CI-tested</text>
+    <text x="715" y="304" fill="#9EC4E8" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23">OAuth 1.0a | Post | Reply | Quote | Delete | CI-tested</text>
 
     <rect x="715" y="350" width="204" height="54" rx="12" fill="#123A5D" stroke="#2A5D86"/>
     <text x="745" y="386" fill="#E9F5FF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600">npm test</text>
