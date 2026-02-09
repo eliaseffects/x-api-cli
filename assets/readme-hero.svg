@@ -1,0 +1,54 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D1B2A"/>
+      <stop offset="1" stop-color="#1B263B"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4CC9F0"/>
+      <stop offset="1" stop-color="#4895EF"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="200%" height="200%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="24" fill="url(#bg)"/>
+  <circle cx="150" cy="120" r="210" fill="#4CC9F0" fill-opacity="0.08"/>
+  <circle cx="1120" cy="560" r="260" fill="#4895EF" fill-opacity="0.08"/>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="130" width="540" height="380" rx="20" fill="#0A0F1A" stroke="#24324A"/>
+    <rect x="80" y="130" width="540" height="44" rx="20" fill="#121B2D"/>
+    <circle cx="110" cy="152" r="7" fill="#FF6B6B"/>
+    <circle cx="134" cy="152" r="7" fill="#FFD166"/>
+    <circle cx="158" cy="152" r="7" fill="#6BCB77"/>
+
+    <text x="104" y="220" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="23">$ x-post "Ship day: CLI is live"</text>
+    <text x="104" y="268" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">✅ Posted: https://x.com/i/status/1234567890</text>
+
+    <text x="104" y="334" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="23">$ x-delete 1234567890</text>
+    <text x="104" y="382" fill="#64DFDF" font-family="'Menlo', 'Consolas', monospace" font-size="22">✅ Deleted: 1234567890</text>
+
+    <text x="104" y="448" fill="#98B3D4" font-family="'Menlo', 'Consolas', monospace" font-size="21">$ x-post --help</text>
+    <text x="104" y="486" fill="#8FD3FF" font-family="'Menlo', 'Consolas', monospace" font-size="20">Usage + examples with safe no-post behavior</text>
+  </g>
+
+  <g>
+    <rect x="680" y="126" width="520" height="72" rx="18" fill="url(#glow)" fill-opacity="0.18"/>
+    <text x="715" y="175" fill="#EAF4FF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="700">x-api-cli</text>
+
+    <text x="715" y="248" fill="#CFE6FF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600">Reliable X API commands for real automation</text>
+
+    <text x="715" y="304" fill="#9EC4E8" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23">OAuth 1.0a • Post • Reply • Quote • Delete • CI-tested</text>
+
+    <rect x="715" y="350" width="204" height="54" rx="12" fill="#123A5D" stroke="#2A5D86"/>
+    <text x="745" y="386" fill="#E9F5FF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600">npm test</text>
+
+    <rect x="940" y="350" width="260" height="54" rx="12" fill="#113D33" stroke="#2C7262"/>
+    <text x="967" y="386" fill="#E9FFF8" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600">tag vX.Y.Z to release</text>
+
+    <text x="715" y="468" fill="#8EB7DD" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20">Built for scripts, bots, and CI pipelines.</text>
+    <text x="715" y="502" fill="#8EB7DD" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20">Now hardened against accidental posts from help flags.</text>
+  </g>
+</svg>

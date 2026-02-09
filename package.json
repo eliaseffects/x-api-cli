@@ -1,15 +1,25 @@
 {
   "name": "x-api-cli",
   "version": "1.0.0",
-  "description": "Simple Node.js CLI to post and delete tweets using the official X (Twitter) API v2 (OAuth 1.0a).",
+  "description": "Node.js CLI for posting and deleting tweets with X API v2 using OAuth 1.0a.",
   "main": "x-post.mjs",
   "type": "module",
   "bin": {
     "x-post": "./x-post.mjs",
     "x-delete": "./x-delete.mjs"
   },
+  "files": [
+    "assets",
+    "README.md",
+    "LICENSE",
+    "lib",
+    "x-post.mjs",
+    "x-delete.mjs"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "node --check x-post.mjs && node --check x-delete.mjs && node --check lib/x-cli-common.mjs && node --check test/x-cli-common.test.mjs",
+    "test": "npm run lint && node --test",
+    "prepublishOnly": "npm test"
   },
   "keywords": [
     "twitter",
@@ -20,6 +30,9 @@
   ],
   "author": "Reality Shifting Tech",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "dependencies": {
     "twitter-api-v2": "^1.29.0"
   }

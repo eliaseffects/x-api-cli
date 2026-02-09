@@ -1,60 +1,53 @@
 #!/usr/bin/env node
 import { TwitterApi } from 'twitter-api-v2';
-import { readFileSync, existsSync } from 'fs';
-import { homedir } from 'os';
-import { join } from 'path';
+import {
+  getCredentialHelpText,
+  getDeleteHelpText,
+  loadCredentials,
+  parseDeleteArgs,
+} from './lib/x-cli-common.mjs';
 
-function loadCredentials() {
-  if (process.env.X_API_KEY && process.env.X_ACCESS_TOKEN) {
-    return {
-      consumerKey: process.env.X_API_KEY,
-      consumerSecret: process.env.X_API_SECRET,
-      accessToken: process.env.X_ACCESS_TOKEN,
-      accessTokenSecret: process.env.X_ACCESS_SECRET,
-    };
-  }
-  const configPaths = [
-    join(process.cwd(), 'x-api.json'),
-    join(process.cwd(), '.x-api.json'),
-    join(homedir(), '.config', 'x-api.json'),
-    join(homedir(), '.clawdbot', 'secrets', 'x-api.json')
-  ];
-  for (const configPath of configPaths) {
-    if (existsSync(configPath)) {
-      try {
-        return JSON.parse(readFileSync(configPath, 'utf8'));
-      } catch (e) {
-        console.error(`❌ Failed to parse ${configPath}:`, e.message);
-      }
-    }
-  }
-  return null;
+const parsed = parseDeleteArgs(process.argv.slice(2));
+
+if (parsed.help) {
+  console.log(getDeleteHelpText());
+  process.exit(0);
 }
 
-const credentials = loadCredentials();
-if (!credentials) {
-  console.error('❌ No credentials found');
+if (parsed.error) {
+  console.error(`❌ ${parsed.error}`);
+  console.error(getDeleteHelpText());
+  process.exit(1);
+}
+
+const credentialState = loadCredentials({ configPath: parsed.configPath });
+if (!credentialState.credentials) {
+  console.error(`❌ ${credentialState.error}`);
+  console.error(getCredentialHelpText(credentialState.searchedPaths));
   process.exit(1);
 }
 
 const client = new TwitterApi({
-  appKey: credentials.consumerKey,
-  appSecret: credentials.consumerSecret,
-  accessToken: credentials.accessToken,
-  accessSecret: credentials.accessTokenSecret,
+  appKey: credentialState.credentials.consumerKey,
+  appSecret: credentialState.credentials.consumerSecret,
+  accessToken: credentialState.credentials.accessToken,
+  accessSecret: credentialState.credentials.accessTokenSecret,
 });
 
-const tweetIds = process.argv.slice(2);
-if (tweetIds.length === 0) {
-  console.error('Usage: x-delete <tweet-id> [<tweet-id>...]');
-  process.exit(1);
-}
-
-for (const tweetId of tweetIds) {
+let hasFailures = false;
+for (const tweetId of parsed.tweetIds) {
   try {
     await client.v2.deleteTweet(tweetId);
     console.log(`✅ Deleted: ${tweetId}`);
-  } catch (err) {
-    console.error(`❌ Failed to delete ${tweetId}:`, err.message);
+  } catch (error) {
+    hasFailures = true;
+    console.error(`❌ Failed to delete ${tweetId}: ${error.message}`);
+    if (error.data) {
+      console.error(JSON.stringify(error.data, null, 2));
+    }
   }
+}
+
+if (hasFailures) {
+  process.exit(1);
 }

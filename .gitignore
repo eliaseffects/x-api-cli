@@ -3,3 +3,4 @@ node_modules
 x-api.json
 .x-api.json
 *.log
+*.tgz
