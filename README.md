@@ -127,6 +127,27 @@ flowchart LR
 2. Ensure the package name (`x-api-cli`) is available to publish on npm.
 3. Keep `version` in `package.json` aligned with your next tag.
 
+### Trusted Publishing setup
+
+1. In npm, configure a trusted publisher for package `x-api-cli`:
+   `Repository owner:` `eliaseffects`
+   `Repository:` `x-api-cli`
+   `Workflow file:` `.github/workflows/release.yml`
+   `Environment:` leave empty unless you use one in GitHub Actions.
+2. In GitHub, set repository variable:
+
+```bash
+gh variable set NPM_TRUSTED_PUBLISHING --repo eliaseffects/x-api-cli --body true
+```
+
+3. Re-run the latest release job, or push a new tag:
+
+```bash
+gh run rerun 21823966697 --repo eliaseffects/x-api-cli
+```
+
+If npm does not allow trusted publisher setup before first package publish, do one bootstrap publish with `NPM_TOKEN`, then switch back to trusted publishing only.
+
 ### Ship a release
 
 ```bash
