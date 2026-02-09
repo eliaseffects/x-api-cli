@@ -123,7 +123,7 @@ flowchart LR
 
 1. Configure one npm auth strategy:
    `Option A:` Add `NPM_TOKEN` as a repository secret in GitHub.
-   `Option B:` Configure npm Trusted Publishing for this GitHub repo/workflow (OIDC).
+   `Option B:` Configure npm Trusted Publishing for this GitHub repo/workflow (OIDC), then set repository variable `NPM_TRUSTED_PUBLISHING=true`.
 2. Ensure the package name (`x-api-cli`) is available to publish on npm.
 3. Keep `version` in `package.json` aligned with your next tag.
 
@@ -139,6 +139,13 @@ git push origin HEAD --follow-tags
 ```
 
 Tag format must be `vMAJOR.MINOR.PATCH` (for example: `v1.1.0`).
+
+### Homebrew (via your tap)
+
+```bash
+brew tap eliaseffects/tap
+brew install x-api-cli
+```
 
 ## Security Notes
 
