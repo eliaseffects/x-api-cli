@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+x-api.json
+.x-api.json
+*.log
