@@ -121,7 +121,9 @@ flowchart LR
 
 ### One-time setup
 
-1. Add `NPM_TOKEN` as a repository secret in GitHub.
+1. Configure one npm auth strategy:
+   `Option A:` Add `NPM_TOKEN` as a repository secret in GitHub.
+   `Option B:` Configure npm Trusted Publishing for this GitHub repo/workflow (OIDC).
 2. Ensure the package name (`x-api-cli`) is available to publish on npm.
 3. Keep `version` in `package.json` aligned with your next tag.
 

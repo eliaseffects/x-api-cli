@@ -5,8 +5,8 @@
   "main": "x-post.mjs",
   "type": "module",
   "bin": {
-    "x-post": "./x-post.mjs",
-    "x-delete": "./x-delete.mjs"
+    "x-post": "x-post.mjs",
+    "x-delete": "x-delete.mjs"
   },
   "files": [
     "assets",

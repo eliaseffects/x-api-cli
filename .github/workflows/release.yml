@@ -44,11 +44,27 @@ jobs:
       - run: npm ci
       - run: npm test
 
-      - name: Publish to npm
+      - name: Select npm auth strategy
+        id: npm-auth
         if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "mode=token" >> "$GITHUB_OUTPUT"
+            echo "Using NPM_TOKEN secret."
+          else
+            echo "mode=oidc" >> "$GITHUB_OUTPUT"
+            echo "NPM_TOKEN is not set. Attempting npm trusted publishing (OIDC)."
+          fi
+
+      - name: Publish to npm
+        if: startsWith(github.ref, 'refs/tags/') && steps.npm-auth.outputs.mode == 'token'
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm (Trusted Publishing)
+        if: startsWith(github.ref, 'refs/tags/') && steps.npm-auth.outputs.mode == 'oidc'
+        run: npm publish --provenance --access public
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
