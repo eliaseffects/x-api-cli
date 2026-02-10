@@ -67,7 +67,12 @@ jobs:
 
       - name: Publish to npm (Trusted Publishing)
         if: startsWith(github.ref, 'refs/tags/') && steps.npm-auth.outputs.mode == 'oidc'
-        run: npm publish --provenance --access public
+        run: |
+          # Ensure npm uses OIDC trusted publishing flow rather than token auth.
+          unset NODE_AUTH_TOKEN
+          npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
 
       - name: npm publish skipped
         if: startsWith(github.ref, 'refs/tags/') && steps.npm-auth.outputs.mode == 'skip'
