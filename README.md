@@ -1,7 +1,7 @@
 # x-api-cli
 
 <p align="center">
-  <img src="./assets/readme-hero.svg" alt="x-api-cli banner" width="100%" />
+  <img src="./assets/social-preview.png" alt="x-api-cli banner" width="100%" />
 </p>
 
 <p align="center">
