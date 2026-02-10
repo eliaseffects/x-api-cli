@@ -32,9 +32,14 @@
   "keywords": [
     "twitter",
     "x",
+    "x-api",
+    "twitter-api-v2",
     "api",
     "cli",
-    "oauth"
+    "oauth",
+    "tweet",
+    "automation",
+    "developer-tools"
   ],
   "author": "Reality Shifting Tech",
   "license": "MIT",
