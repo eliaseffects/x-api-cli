@@ -1,6 +1,6 @@
 {
   "name": "x-api-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node.js CLI for posting and deleting tweets with X API v2 using OAuth 1.0a.",
   "homepage": "https://github.com/eliaseffects/x-api-cli#readme",
   "repository": {
