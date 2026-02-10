@@ -70,6 +70,10 @@ jobs:
         run: |
           # Ensure npm uses OIDC trusted publishing flow rather than token auth.
           unset NODE_AUTH_TOKEN
+          cat > "$RUNNER_TEMP/npmrc-no-auth" <<'EOF'
+          registry=https://registry.npmjs.org/
+          EOF
+          export NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npmrc-no-auth"
           npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ""
